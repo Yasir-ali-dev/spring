@@ -7,12 +7,20 @@ import org.springframework.stereotype.Component;
 public class Person {
     private String name="Alex";
 
-    //@Autowired annotation on class field
-    @Autowired
-    private Vehicle vehicle;
+    //@Autowired annotation on class field {not recommended in the production } b/c we can't make field final
+    //@Autowired
 
-    public Person() {
-        System.out.println("Person bean is created");
+
+    //private Vehicle vehicle;
+
+
+    // final can be used @Autowired constructer
+    private final Vehicle vehicle;
+
+    @Autowired
+    public Person(Vehicle vehicle) {
+        System.out.println("Person bean is created in Person construtor");
+        this.vehicle=vehicle;
     }
 
     public String getName() {
@@ -27,7 +35,13 @@ public class Person {
         return vehicle;
     }
 
+    //@autowired with setter method {not recommended in the production } b/c we can't make field final
+    //@Autowired
+    /*
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
+
+     */
+
 }

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Vehicle {
-    private String name="Audi";
+    private String name="Ford Mustang";
 
     public Vehicle(){
         System.out.println("Vehicle Bean is created");
@@ -26,4 +26,5 @@ public class Vehicle {
     public String toString(){
         return "Vehicle name is "+this.name;
     }
+
 }
