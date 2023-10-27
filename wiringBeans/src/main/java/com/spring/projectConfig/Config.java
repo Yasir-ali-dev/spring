@@ -25,7 +25,6 @@ public class Config {
     }
     */
 
-
     // wiring beans using method parameters
     @Bean
     public Person person (Vehicle vehicle){
