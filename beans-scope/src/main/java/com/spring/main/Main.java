@@ -1,5 +1,6 @@
 package com.spring.main;
 
+import com.spring.beans.Person;
 import com.spring.beans.Vehicle;
 import com.spring.projectConfig.ProjectConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -26,10 +27,11 @@ public class Main {
         */
 
         // --- Eager and lazy instantiation { by default Eager }
+        /*
         System.out.println("Before retrieving and referencing the bean");
         Vehicle vehicle1=context.getBean(Vehicle.class);
         System.out.println("After retrieving and referencing the bean");
-
+        */
         /*
             with Eager --> bean instantiated at startup of application
                 Vehicle bean instantiated
@@ -43,6 +45,19 @@ public class Main {
         * */
 
 
+        // prototyped scope
+        Person person = context.getBean(Person.class);
+        Person abrar = context.getBean(Person.class);
+        person.setName("person");
+        abrar.setName("abrar");
+        System.out.println("person  "+person.hashCode());
+        System.out.println("abrar  "+abrar.hashCode());
+        System.out.println(abrar.getName());
+        System.out.println(person.getName());
+
+        if (!(person == abrar)){
+            System.out.println("Bean is prototyped scope");
+        }
 
     }
 }
