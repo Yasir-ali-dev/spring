@@ -3,6 +3,8 @@ package com.spring;
 
 import com.spring.abstraction.Bank;
 import com.spring.abstraction.Honda;
+import com.spring.abstraction.SaintThreasas;
+import com.spring.abstraction.School;
 import com.spring.classes.*;
 import com.spring.interfaces.Animal;
 import com.spring.interfaces.Artist;
@@ -29,13 +31,18 @@ public class Main {
         Animal.smell();
       */
         /// abstract class
+        /*
         Honda honda = new Honda();
+        //        honda.changeGear();
+        //        honda.run();
         Circle circle = new Circle();
         Bank b;
         b= new com.spring.abstraction.StateBank();
         System.out.println(b.rateOfInterest());
         b= new com.spring.abstraction.SindhBank();
         System.out.println(b.rateOfInterest());
+        School saintThreasas = new SaintThreasas();
+        */
 
 
     }
