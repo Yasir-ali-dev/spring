@@ -28,20 +28,24 @@ import java.time.LocalDateTime;
 public class Product {
     @Column(nullable = false)
     private String name;
+
     @Column(name = "stock_keeping_unit",nullable = false)
     private String sku;
 
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "sequence_generator")
     @SequenceGenerator(name = "sequence_generator", sequenceName = "product_sequence_name", allocationSize = 1)
     private Long id;
+
     private String description;
 
     private BigDecimal price;
+
     private Boolean active;
 
     @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime dateCreated;
+
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime lastUpdated;
