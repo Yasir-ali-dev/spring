@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 
 @Table(name = "students")
 @Getter
@@ -19,5 +21,8 @@ public class Student {
 
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
     private Laptop laptop;
+
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+    private List<Address> addressList;
 
 }
