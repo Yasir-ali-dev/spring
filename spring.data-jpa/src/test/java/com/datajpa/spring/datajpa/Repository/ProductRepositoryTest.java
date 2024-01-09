@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.math.BigDecimal;
 import java.util.List;
 
-@SpringBootTest
+//@SpringBootTest
 class ProductRepositoryTest {
     @Autowired
     private ProductRepository productRepository;
