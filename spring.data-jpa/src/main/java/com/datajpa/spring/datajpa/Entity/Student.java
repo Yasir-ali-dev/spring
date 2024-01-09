@@ -25,4 +25,6 @@ public class Student {
     @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
     private List<Address> addressList;
 
+    @ManyToOne
+    private ClassO aClassO;
 }

@@ -1,6 +1,8 @@
 package com.datajpa.spring.datajpa;
 
-import com.datajpa.spring.datajpa.Entity.*;
+import com.datajpa.spring.datajpa.Entity.ClassO;
+import com.datajpa.spring.datajpa.Entity.Student;
+import com.datajpa.spring.datajpa.Repository.ClassRepository;
 import com.datajpa.spring.datajpa.Repository.JobRepository;
 import com.datajpa.spring.datajpa.Repository.StudentRepository;
 import org.slf4j.Logger;
@@ -20,6 +22,9 @@ public class Application implements CommandLineRunner {
 
 	@Autowired
 	private JobRepository jobRepository;
+
+	@Autowired
+	private ClassRepository classRepository;
 
 	private Logger logger= LoggerFactory.getLogger(Application.class);
 
@@ -69,6 +74,8 @@ public class Application implements CommandLineRunner {
 		logger.info("job : {} ", savedJob.getName());
 		*/
 
+		//	ONE-TO-MANY Mapping
+		/*
 		Student student= new Student();
 		student.setName("Yasir Ali");
 		student.setAbout("Software Engineer");
@@ -87,10 +94,31 @@ public class Application implements CommandLineRunner {
 		a2.setStudent(student);
 
 		student.setAddressList(List.of(a1,a2));
-
 		Student savedStudent = studentRepository.save(student);
-
 		logger.info(" student {} ",savedStudent.getAddressList());
+		*/
+
+
+		Student student= new Student();
+		student.setName("Ameer Ali");
+		student.setAbout("Developer Engineer");
+
+		Student s2= new Student();
+		s2.setName("Sajid Ali");
+		s2.setAbout("Developer");
+
+
+		ClassO classO=new ClassO();
+		classO.setClassName("vii-B");
+		classO.setStudents(List.of(student,s2));
+
+		s2.setAClassO(classO);
+		student.setAClassO(classO);
+
+		ClassO savedClass = classRepository.save(classO);
+
+		logger.info("class {} ",savedClass.getStudents());
+
 
 	}
 }
