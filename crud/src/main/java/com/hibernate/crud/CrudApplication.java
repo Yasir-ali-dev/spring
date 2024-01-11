@@ -20,13 +20,33 @@ public class CrudApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		System.out.println("play");
 
-		Student tempStudent = new Student( );
-		tempStudent.setEmail("yasir@gmail.com");
-		tempStudent.setFirstName("Yasir");
-		tempStudent.setLastName("Ali");
-		studentDAO.save(tempStudent);
+		//createStudent(tempStudent);
+		//createMultipleStudent();
 
-		System.out.println(tempStudent.getId());
+		System.out.println(studentDAO.findById(2));
+
+		System.out.println(studentDAO.findById(5));
+		System.out.println(studentDAO.findById(3));
+
+
+	}
+
+	public void createStudent (Student student){
+		studentDAO.save(student);
+		System.out.println(student.getId());
+
+	}
+
+
+	public void createMultipleStudent (){
+		Student student1 = new Student("Hassan","Ali","hasssan@gmail.com");
+		Student student2 = new Student("Hussain","Ali","hussain@yahoo.com");
+		Student student3 = new Student("Haider","Ali","haider@gmail.com");
+
+		studentDAO.save(student1);
+		studentDAO.save(student2);
+		studentDAO.save(student3);
+
 
 	}
 }
