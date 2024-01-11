@@ -1,7 +1,10 @@
 package com.datajpa.spring.datajpa;
 
+import com.datajpa.spring.datajpa.Entity.Category;
 import com.datajpa.spring.datajpa.Entity.ClassO;
+import com.datajpa.spring.datajpa.Entity.Item;
 import com.datajpa.spring.datajpa.Entity.Student;
+import com.datajpa.spring.datajpa.Repository.CategoryRepository;
 import com.datajpa.spring.datajpa.Repository.ClassRepository;
 import com.datajpa.spring.datajpa.Repository.JobRepository;
 import com.datajpa.spring.datajpa.Repository.StudentRepository;
@@ -25,6 +28,9 @@ public class Application implements CommandLineRunner {
 
 	@Autowired
 	private ClassRepository classRepository;
+
+	@Autowired
+	private CategoryRepository categoryRepository;
 
 	private Logger logger= LoggerFactory.getLogger(Application.class);
 
@@ -97,8 +103,8 @@ public class Application implements CommandLineRunner {
 		Student savedStudent = studentRepository.save(student);
 		logger.info(" student {} ",savedStudent.getAddressList());
 		*/
-
-
+		//MANY_TO_MANY MAPPING STUDENT AND CLASS
+		/*
 		Student student= new Student();
 		student.setName("Ameer Ali");
 		student.setAbout("Developer Engineer");
@@ -118,7 +124,46 @@ public class Application implements CommandLineRunner {
 		ClassO savedClass = classRepository.save(classO);
 
 		logger.info("class {} ",savedClass.getStudents());
+		*/
 
+
+		Category c1 = new Category();
+		c1.setName("Mobile Phones");
+		c1.setCategory_id("c1-1");
+
+		Category category = new Category();
+		category.setName("Electronics");
+		category.setCategory_id("c2-1");
+
+
+		Item i1 = new Item();
+		i1.setName("Samsung 12");
+		i1.setItemId("I-1");
+
+
+		Item i2 = new Item();
+		i2.setName("I Phone 12");
+		i2.setItemId("I-2");
+
+
+		Item i3 = new Item();
+		i3.setName("TVL TV");
+		i3.setItemId("I-3");
+
+		c1.setItems(List.of(i1,i2));
+		category.setItems(List.of(i3,i2,i1));
+
+		i3.setCategories(List.of(category));
+		i2.setCategories(List.of(c1,category));
+		i1.setCategories(List.of(c1,category));
+
+
+		categoryRepository.save(c1);
+		categoryRepository.save(category);
+
+
+		logger.info("done");
 
 	}
+
 }
