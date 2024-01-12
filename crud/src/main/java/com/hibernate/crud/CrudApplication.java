@@ -19,16 +19,7 @@ public class CrudApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("play");
-
-		//createStudent(tempStudent);
-		//createMultipleStudent();
-
-		System.out.println(studentDAO.findById(2));
-
-		System.out.println(studentDAO.findById(5));
-		System.out.println(studentDAO.findById(3));
-
-
+		System.out.println(studentDAO.findByLastName("Hassan"));
 	}
 
 	public void createStudent (Student student){
@@ -46,7 +37,6 @@ public class CrudApplication implements CommandLineRunner{
 		studentDAO.save(student1);
 		studentDAO.save(student2);
 		studentDAO.save(student3);
-
 
 	}
 }
